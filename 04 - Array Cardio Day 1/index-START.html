@@ -37,29 +37,98 @@
     
     // Array.prototype.filter()
     // 1. Filter the list of inventors for those who were born in the 1500's
+    const yearFilter = inventors.filter(inventor => {
+      if(inventor.year > 1500 && inventor.year < 1600){
+        return true
+      }
+    })
+    console.log(yearFilter)
 
     // Array.prototype.map()
     // 2. Give us an array of the inventors first and last names
-
+    const inventorArray = inventors.map(inventor =>{
+        return `${inventor.first} ${inventor.last}`
+    })
+    console.log(inventorArray)
+    
     // Array.prototype.sort()
     // 3. Sort the inventors by birthdate, oldest to youngest
+    const inventorSort = inventors.sort((first, second) => {
+      console.log(first.year, second.year)
+      if (first.year > second.year) { //first is acutally teh 2nd element 
+        return 1
+      }else {
+        return -1
+      }
+    })
+    console.table(inventorSort)
+    console.log(inventorSort)
 
     // Array.prototype.reduce()
     // 4. How many years did all the inventors live all together?
+    const sumOfYears = inventors.reduce((total, inventor) => {
+      
+      return total + (inventor.passed - inventor.year)
+    },0)
+    console.log(sumOfYears)
 
     // 5. Sort the inventors by years lived
+    const yearsLivedSort = inventors.sort((first, second) => {
+      if ((first.passed - first.year) > (second.passed -second.year)){
+        return -1
+      } else {
+        return 1
+      }
+    })
+    console.table(yearsLivedSort)
 
     // 6. create a list of Boulevards in Paris that contain 'de' anywhere in the name
     // https://en.wikipedia.org/wiki/Category:Boulevards_in_Paris
+    //const sourceList = document.querySelector('.mw-category')
+    //let anchorTags = Array.from(sourceList.querySelectorAll('a'))
+    //let newList =[]
+    //const deList = anchorTags.map(entry => {
+      //if (entry.textContent.includes('de')){
+        //newList.push(entry.textContent)
+      //}
+    //})
+
+  
 
 
     // 7. sort Exercise
     // Sort the people alphabetically by last name
+    const newPeopleList = people.map(person => {
+      return person.split(', ')
+    })
+    console.table(newPeopleList)
+    const fullNameList = newPeopleList.sort((first, second) => {
+      
+      if (first[0].toLowerCase() > second[0].toLowerCase()){
+        
+        return 1
+      } else {
+        return -1
+      }
+    })
+    console.log(newPeopleList[0][0])
+    console.log(fullNameList)
 
     // 8. Reduce Exercise
     // Sum up the instances of each of these
     const data = ['car', 'car', 'truck', 'truck', 'bike', 'walk', 'car', 'van', 'bike', 'walk', 'car', 'van', 'car', 'truck' ];
 
+
+
+    const transportation = data.reduce((obj, item) => {
+      console.log(item)
+      if (!obj[item]) {
+        obj[item] = 0
+      } obj[item]++
+      return obj
+      
+
+    }, {})
   </script>
 </body>
 </html>
