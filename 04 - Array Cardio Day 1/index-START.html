@@ -67,7 +67,7 @@
     // Array.prototype.reduce()
     // 4. How many years did all the inventors live all together?
     const sumOfYears = inventors.reduce((total, inventor) => {
-      
+      console.log(total)
       return total + (inventor.passed - inventor.year)
     },0)
     console.log(sumOfYears)
@@ -121,7 +121,7 @@
 
 
     const transportation = data.reduce((obj, item) => {
-      console.log(item)
+      console.log(obj, item)
       if (!obj[item]) {
         obj[item] = 0
       } obj[item]++
